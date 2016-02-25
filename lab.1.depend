@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1456435238 source:e:\univer\anul ii\git\faf-141-cristea-victor\lab#1\main.cpp
+	<windows.h>
+	<tchar.h>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<time.h>
+

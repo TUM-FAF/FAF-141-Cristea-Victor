@@ -1,11 +1,3 @@
-﻿Laboratory work nr.1
-====================
-Title
--------------------
-
-
-
-
 Creation steps of the app:
 -------------------------
 

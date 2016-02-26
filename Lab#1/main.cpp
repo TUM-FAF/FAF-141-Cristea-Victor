@@ -137,7 +137,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 TEXT("Button"),//name
                 TEXT("Add"),//text on button
                 WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,//type
-                5,210,//starting poin
+                5,245,//starting poin
                 160,50,//width and height
                 hwnd,//parent
                 (HMENU)IDC_ADD_BUTTON,//menu
@@ -149,7 +149,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 TEXT("button"),
                 TEXT("Quit"), // the caption of the button
                 WS_CHILD | WS_VISIBLE| BS_PUSHBUTTON, // the styles
-                200, 210, // the left and top co-ordinates
+                200, 245, // the left and top co-ordinates
                 157, 50, // width and height
                 hwnd, // parent window handle
                 (HMENU)IDC_RESTART_BUTTON, // the ID of your button
@@ -176,7 +176,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 TEXT("edit"), // The class name required is edit
                 TEXT(placeholder), // Default text.
                 WS_VISIBLE | WS_CHILD | WS_BORDER, // Textbox styles
-                5, 180, // the left and top co-ordinates
+                5, 220, // the left and top co-ordinates
                 350, 20, // width and height
                 hwnd, // parent window handle
                 (HMENU)IDC_TEXT_INPUT, // the ID of your editbox
@@ -365,7 +365,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 }
                 SetBkColor(hdc,TRANSPARENT);
                 SetTextColor(hdc, RGB(16, 255, 160));
-                DrawText(hdc,"Done with Pride and Prejudice by Cristea Victor",-1,&rect,DT_CENTER|DT_BOTTOM|DT_SINGLELINE);
+                DrawText(hdc,"Done with Pride and Prejudice by Cristea Victor",-1,&rect,DT_SINGLELINE | DT_CENTER | DT_VCENTER);
                 TextOut(hdc,5,165,"Words that starts with",strlen("Words that starts with"));
                 SetBkColor(hdc,RGB(100,255,255));
                 SetTextColor(hdc,RGB(1,1,1));

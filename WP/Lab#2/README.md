@@ -8,13 +8,11 @@ Contents
 ---------------------------
 
 -The keyboard
-
 -Child windows control
   - Scroll Bar
   - Listbox
-
-- Menus and Other Resources
-- Dialog Boxes*
+-Menus and Other Resources
+-Dialog Boxes
 
 Application Creation Steps
 --------------------------

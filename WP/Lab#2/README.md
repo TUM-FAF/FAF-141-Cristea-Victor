@@ -8,6 +8,7 @@ Contents
 ---------------------------
 
 -The keyboard
+
 -Child windows control
   - Scroll Bar
   - Listbox
@@ -16,8 +17,6 @@ Contents
 
 Application Creation Steps
 --------------------------
-
-I thought that it will be better if I will continue to develop my game, this way I will update my game and make the laboratory too.
 
   I started from the menu and the dialog box,so I read about resources file and how to declare them.It wasn't as tough as I imagined.So it wasn't very though to implement it. 
   

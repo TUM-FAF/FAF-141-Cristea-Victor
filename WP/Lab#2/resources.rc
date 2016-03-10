@@ -1,0 +1,48 @@
+﻿#include "resources.h"
+
+#include "afxres.h"
+
+//Icon location
+
+IDI_ICON  ICON DISCARDABLE "icon.ico"
+
+//Cursor location
+
+IDI_CURSOR CURSOR DISCARDABLE "cursor.cur"
+
+IDB_BACKGROUND_1 BITMAP DISCARDABLE "back-1.bmp"
+IDB_BACKGROUND_2 BITMAP DISCARDABLE "back_2.bmp"
+
+IDB_MENU MENU DISCARDABLE BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Exit",    IDB_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Restart", IDB_RESTART
+    END
+    POPUP "&Style"
+    BEGIN
+        MENUITEM "&Background I",  IDB_BACKGROUND_1
+        MENUITEM "&Background II", IDB_BACKGROUND_2
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Records",     IDB_RECORDS
+        MENUITEM "&Info",       IDB_INFO
+    END
+END
+
+IDB_DIALOG DIALOG DISCARDABLE 32,32,180,100
+STYLE DS_MODALFRAME | WS_POPUP
+FONT 10 , "Times New Roman"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,66,80,50,14
+    ICON            IDI_ICON,IDC_STATIC,0,0,30,50
+    CTEXT           "Shift+L to focus on the list box",IDC_STATIC,40,10,100,8
+    CTEXT           "Ctrl+Space to focus on the color scroll bar",IDC_STATIC,7,20,166,8
+    CTEXT           "Use the spacebar while focused on the list box ",IDC_STATIC,7,30,166,8
+    CTEXT           "to get additional info or use double click ",IDC_STATIC,7,40,166,8
+END
+

@@ -117,7 +117,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     char * placeholder = new char[26];
     char * messag = new char[100];
     static char *cpscore;
-    placeholder = "Type here the new task...";
+    placeholder = "Type here the new word...";
 
 
 
@@ -508,7 +508,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 {
                     backgrBMP = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BACKGROUND_2));
                 }
-                if(!backgrBMP){MessageBox(NULL,"Whyyyyyyyy Backgound? :D ","Message",MB_OK);}
+                if(!backgrBMP){MessageBox(NULL,"Whyyyyyyyy Background? :D ","Message",MB_OK);}
                 HBRUSH backgrBrush = CreatePatternBrush(backgrBMP);
 
                 HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, backgrBrush);

@@ -35,7 +35,37 @@ Application Creation Steps
   
   Functionality
 ================
-
 ![screenshot1] (https://github.com/TUM-FAF/FAF-141-Cristea-Victor/tree/master/WP/Lab%232/Screenshot_7.png)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   

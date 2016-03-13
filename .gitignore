@@ -36,3 +36,8 @@
 # CodeBlocks artefacts
 *.depend
 *.layout
+*.h
+*.cpp
+# Images
+*.png
+*.bmp

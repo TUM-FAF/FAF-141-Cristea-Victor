@@ -1,3 +1,13 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
 # Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -7,11 +17,6 @@
 *.out
 *.toc
 *.fmt
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
 
 # Libraries
 *.lib
@@ -27,11 +32,20 @@
 *.lai
 *.la
 *.a
+*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
 
 # CodeBlocks artefacts
 *.depend
@@ -41,3 +55,4 @@
 # Images
 *.png
 *.bmp
+*.md

@@ -1,1 +1,58 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
+# Precompiled Headers
+*.gch
+*.pch
+
+# Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs) + Compiled Dynamic libraries
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# CodeBlocks artefacts
+*.depend
+*.layout
+*.h
+*.cpp
+# Images
+*.png
+*.bmp
+*.md

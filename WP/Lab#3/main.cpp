@@ -714,6 +714,7 @@ POINT getCurrentPointPosition(int xMouse, int yMouse, RECT limit, int width)
 
     return result;
 }
+// fill with gradient
 void fillWithGradient(HDC hdc, HBRUSH hBrush, RECT tempRect, RECT gradientRect, int colorNr)
 {
     for(int i = 0; i < (gradientRect.right - gradientRect.left); i++) {
@@ -729,4 +730,4 @@ void fillWithGradient(HDC hdc, HBRUSH hBrush, RECT tempRect, RECT gradientRect, 
             hBrush = CreateSolidBrush(RGB(0, 0, color));
         FillRect(hdc, &tempRect, hBrush);
         DeleteObject(hBrush);
-    }}
+    }

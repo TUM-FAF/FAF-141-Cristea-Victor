@@ -647,7 +647,64 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
             }
             break;
         }
-        case WM_CLOSE:
+        /**/
+        case WM_KEYDOWN:   // keyboard input
+        {
+            switch(wParam)
+            {
+                case KEY_S:
+				     isDrawing = FALSE;
+				break;
+                case KEY_P:  // LeftSHIFT + P
+                {
+                    if (GetAsyncKeyState(VK_LSHIFT))
+                    {
+                     SendMessage(hwnd, WM_COMMAND, MAKEWPARAM(ID_PEN, 0), 0);
+                     Button_SetCheck(HwndPen, BST_UNCHECKED);
+                    }
+                break;
+                }
+
+                case KEY_B:  // LeftSHIFT + B
+                {
+                    if (GetAsyncKeyState(VK_LSHIFT))
+                    {
+                     SendMessage(hwnd, WM_COMMAND, MAKEWPARAM(ID_BLUE, 0), 0);
+                    }
+                break;
+                }
+                case KEY_G:  // LeftSHIFT + G
+                {
+                    if (GetAsyncKeyState(VK_LSHIFT))
+                    {
+                     SendMessage(hwnd, WM_COMMAND, MAKEWPARAM(ID_GREEN, 0), 0);
+                    }
+                break;
+                }
+                case KEY_R:  // LeftSHIFT + R
+                {
+                    if (GetAsyncKeyState(VK_LSHIFT))
+                    {
+                     SendMessage(hwnd, WM_COMMAND, MAKEWPARAM(ID_RED, 0), 0);
+                    }
+                break;
+                }
+                case KEY_C:   // LShift + C
+                {
+                    if (GetAsyncKeyState(VK_LSHIFT))
+                    {
+
+                SendMessage(hwnd, WM_COMMAND, MAKEWPARAM(ID_CLEAR, 0), 0);
+                    }
+                 break;
+                }
+
+                default: return DefWindowProc (hwnd, message, wParam, lParam);
+            break;   // end of switch statement
+            }
+        break;
+        */
+         case WM_CLOSE:
             if(MessageBox(hwnd, "Are you sure you want to exit?", "Paint", MB_YESNO) == IDYES)
                 DestroyWindow(hwnd);
             break;

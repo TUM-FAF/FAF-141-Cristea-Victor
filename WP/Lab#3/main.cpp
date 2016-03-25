@@ -23,7 +23,7 @@ int getFromInput(HWND);
 POINT getCurrentPointPosition(int, int, RECT, int);
 
 COLORREF fillColor = RGB(255, 255, 255);
-COLORREF borderColor = RGB(0, 0, 0);
+COLORREF borderColor = RGB(0, 0, 0) ;
 COLORREF colorSelect(HWND hwnd, COLORREF color)
 {
     COLORREF g_rgbCustom[16] = {0};

@@ -20,11 +20,11 @@ Basic of Working with Mouse. GDI Primitives. Bezier Curve
   - **Mandatory Tasks:**
  for Basic Level (grade 5 || 6) you should be able to:
 
-Draw 5 lines of different colors and weights
+ - Draw 5 lines of different colors and weights
 
-Draw 2 Bezier curves
+ - Draw 2 Bezier curves
 
-Draw 4 plane objects (ex. circle, square, pie, polygon...) of different colors, weights, filled and not
+ - Draw 4 plane objects (ex. circle, square, pie, polygon...) of different colors, weights, filled and not
 
 Draw 2 different objects using mouse
 

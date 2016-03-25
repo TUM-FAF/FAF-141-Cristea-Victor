@@ -1,3 +1,6 @@
+[Please use it for MD doc style](https://daringfireball.net/projects/markdown/syntax)
+
+
 # WP Laboratory Work #3
 
 ## Title

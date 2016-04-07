@@ -1,7 +1,7 @@
 Laboratory Work Nr.4
 ====================
 
-
+-----
 Title: Windows Timer. Animation.
 
 -----

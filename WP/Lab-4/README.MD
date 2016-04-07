@@ -1,13 +1,11 @@
 Laboratory Work Nr.4
 ====================
-
 --------------------
 Title: Windows Timer. Animation.
 --------------------
------
+--------------------
 Things i did :
 --------------------
-
 •Solved flicking problem.
 
 	The primary cause of  flickering is erasing the background, then immediately drawing over it. 

@@ -2,20 +2,10 @@ Laboratory Work Nr.4
 ====================
 
 
-Title
+Title: Windows Timer. Animation.
 
 -----
-
-
-Windows Timer. Animation.
-
-
-------------
-
-
-•Windows timer
-
-
+Things i did :
 --------------------
 
 •Solved flicking problem.

@@ -581,19 +581,10 @@ class Calculator(QtGui.QDialog):
 if __name__ == '__main__':
 
     import sys
-
-    app = QtGui.QApplication(sys.argv)
-    calc = Calculator()
-    sys.exit(calc.exec_())
-
-
-
-if __name__ == "__main__":
-    import sys
     app = QtGui.QApplication(sys.argv)
     Dialog = QtGui.QDialog()
     ui = Ui_Dialog()
     ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
+    Dialog.show()calc = Calculator()
+    sys.exit(calc.exec_())
 

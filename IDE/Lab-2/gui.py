@@ -2,32 +2,118 @@ import sys
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtCore import Qt
 import core
+import math
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
 
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+class Button(QtGui.QToolButton):
+    def __init__(self, text, parent=None):
+        super(Button, self).__init__(parent)
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        self.Dialog=Dialog
-        Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(333, 306)
-        Dialog.setMinimumSize(QtCore.QSize(333, 306))
-        Dialog.setMaximumSize(QtCore.QSize(333, 306))
-        Dialog.setStyleSheet(_fromUtf8("background-color: rgb(98, 95, 93);"))
-        self.pushButton = QtGui.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(10, 260, 72, 34))
-        self.pushButton.setStyleSheet(_fromUtf8("QPushButton {\n"
+        self.setSizePolicy(QtGui.QSizePolicy.Expanding,
+                QtGui.QSizePolicy.Preferred)
+        self.setText(text)
+
+    def sizeHint(self):
+        size = super(Button, self).sizeHint()
+        size.setHeight(size.height() + 20)
+        size.setWidth(max(size.width(), size.height()))
+        return size
+
+
+class Calculator(QtGui.QDialog):
+    NumDigitButtons = 10
+    
+    def __init__(self, parent=None):
+        super(Calculator, self).__init__(parent)
+
+        self.pendingAdditiveOperator = ''
+        self.pendingMultiplicativeOperator = ''
+
+        self.sumInMemory = 0.0
+        self.sumSoFar = 0.0
+        self.factorSoFar = 0.0
+        self.waitingForOperand = True
+
+        self.display = QtGui.QLineEdit('0')
+        self.display.setReadOnly(True)
+        self.display.setAlignment(QtCore.Qt.AlignRight)
+        self.display.setMaxLength(15)
+
+        font = self.display.font()
+        font.setPointSize(font.pointSize() + 8)
+        self.display.setFont(font)
+
+        self.digitButtons = []
+        
+        for i in range(Calculator.NumDigitButtons):
+            self.digitButtons.append(self.createButton(str(i),
+                    self.digitClicked))
+
+        self.pointButton = self.createButton(".", self.pointClicked)
+        self.changeSignButton = self.createButton("\261",
+                self.changeSignClicked)
+
+        self.backspaceButton = self.createButton("Backspace",
+                self.backspaceClicked)
+        self.clearButton = self.createButton("Clear", self.clear)
+        self.clearAllButton = self.createButton("Clear All", self.clearAll)
+
+        self.clearMemoryButton = self.createButton("MC", self.clearMemory)
+        self.readMemoryButton = self.createButton("MR", self.readMemory)
+        self.setMemoryButton = self.createButton("MS", self.setMemory)
+        self.addToMemoryButton = self.createButton("M+", self.addToMemory)
+
+        self.divisionButton = self.createButton("\367",
+                self.multiplicativeOperatorClicked)
+        self.timesButton = self.createButton("\327",
+                self.multiplicativeOperatorClicked)
+        self.minusButton = self.createButton("-", self.additiveOperatorClicked)
+        self.plusButton = self.createButton("+", self.additiveOperatorClicked)
+
+        self.squareRootButton = self.createButton("Sqrt",
+                self.unaryOperatorClicked)
+        self.powerButton = self.createButton("Pow",
+                self.powerOperatorClicked)
+        self.reciprocalButton = self.createButton("1/x",
+                self.unaryOperatorClicked)
+        self.equalButton = self.createButton("=", self.equalClicked)
+
+        mainLayout = QtGui.QGridLayout()
+        mainLayout.setSizeConstraint(QtGui.QLayout.SetFixedSize)
+
+        mainLayout.addWidget(self.display, 0, 0, 1, 6)
+        mainLayout.addWidget(self.backspaceButton, 1, 0, 1, 2)
+        mainLayout.addWidget(self.clearButton, 1, 2, 1, 2)
+        mainLayout.addWidget(self.clearAllButton, 1, 4, 1, 2)
+
+        mainLayout.addWidget(self.clearMemoryButton, 2, 0)
+        mainLayout.addWidget(self.readMemoryButton, 3, 0)
+        mainLayout.addWidget(self.setMemoryButton, 4, 0)
+        mainLayout.addWidget(self.addToMemoryButton, 5, 0)
+
+        for i in range(1, Calculator.NumDigitButtons):
+            row = ((9 - i) / 3) + 2
+            column = ((i - 1) % 3) + 1
+            mainLayout.addWidget(self.digitButtons[i], row, column)
+
+        mainLayout.addWidget(self.digitButtons[0], 5, 1)
+        mainLayout.addWidget(self.pointButton, 5, 2)
+        mainLayout.addWidget(self.changeSignButton, 5, 3)
+
+        mainLayout.addWidget(self.divisionButton, 2, 4)
+        mainLayout.addWidget(self.timesButton, 3, 4)
+        mainLayout.addWidget(self.minusButton, 4, 4)
+        mainLayout.addWidget(self.plusButton, 5, 4)
+
+        mainLayout.addWidget(self.squareRootButton, 2, 5)
+        mainLayout.addWidget(self.powerButton, 3, 5)
+        mainLayout.addWidget(self.reciprocalButton, 4, 5)
+        mainLayout.addWidget(self.equalButton, 5, 5)
+        self.setLayout(mainLayout)
+
+        self.setWindowTitle("Calculator")
+
+    self.pushButton.setStyleSheet(_fromUtf8("QPushButton {\n"
 "color: white;\n"
 "border-width: 1px;\n"
 "border-color: #339;\n"
@@ -67,14 +153,14 @@ class Ui_Dialog(object):
 "max-height: 26px;\n"
 "}\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(75, 75, 75);\n"
+"    background-color: rgb(255, 0, 0);\n"
 "    border-style: inset;\n"
 "}"))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
         self.pushButton_3 = QtGui.QPushButton(Dialog)
         self.pushButton_3.setGeometry(QtCore.QRect(170, 260, 72, 34))
         self.pushButton_3.setStyleSheet(_fromUtf8("QPushButton {\n"
-"color: white;\n"
+"color: black;\n"
 "border-width: 1px;\n"
 "border-color: #339;\n"
 "border-style: solid;\n"
@@ -97,7 +183,7 @@ class Ui_Dialog(object):
         self.pushButton_4 = QtGui.QPushButton(Dialog)
         self.pushButton_4.setGeometry(QtCore.QRect(250, 260, 72, 34))
         self.pushButton_4.setStyleSheet(_fromUtf8("QPushButton {\n"
-"color: white;\n"
+"color: black;\n"
 "border-width: 1px;\n"
 "border-color: #339;\n"
 "border-style: solid;\n"
@@ -490,39 +576,16 @@ class Ui_Dialog(object):
 "    background-color: rgb(75, 75, 75);\n"
 "    border-style: inset;\n"
 "}"))
-        self.pushButton_20.setObjectName(_fromUtf8("pushButton_20"))
-        self.pushButton_20.clicked.connect(lambda: core.AC(self))
-        ops = [self.pushButton_19,self.pushButton_16,self.pushButton_12,self.pushButton_8,self.pushButton_4]
-        nums = [self.pushButton_2,self.pushButton_5,self.pushButton_6,self.pushButton_7,self.pushButton_9,self.pushButton_10,self.pushButton_11,self.pushButton_13,self.pushButton_14,self.pushButton_15]
-        for i in nums:
-            i.clicked.connect(lambda: core.Nums(self))
-        for i in ops:
-            i.clicked.connect(lambda: core.Operator(self))
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "Calculator", None))
-        self.pushButton.setText(_translate("Dialog", "+/-", None))
-        self.pushButton_2.setText(_translate("Dialog", "0", None))
-        self.pushButton_3.setText(_translate("Dialog", ".", None))
-        self.pushButton_4.setText(_translate("Dialog", "=", None))
-        self.pushButton_5.setText(_translate("Dialog", "1", None))
-        self.pushButton_6.setText(_translate("Dialog", "2", None))
-        self.pushButton_7.setText(_translate("Dialog", "3", None))
-        self.pushButton_8.setText(_translate("Dialog", "+", None))
-        self.pushButton_9.setText(_translate("Dialog", "4", None))
-        self.pushButton_10.setText(_translate("Dialog", "5", None))
-        self.pushButton_11.setText(_translate("Dialog", "6", None))
-        self.pushButton_12.setText(_translate("Dialog", "-", None))
-        self.pushButton_13.setText(_translate("Dialog", "7", None))
-        self.pushButton_14.setText(_translate("Dialog", "8", None))
-        self.pushButton_15.setText(_translate("Dialog", "9", None))
-        self.pushButton_16.setText(_translate("Dialog", "*", None))
-        self.pushButton_17.setText(_translate("Dialog", "sqrt", None))
-        self.pushButton_18.setText(_translate("Dialog", "pow", None))
-        self.pushButton_19.setText(_translate("Dialog", "/", None))
-        self.pushButton_20.setText(_translate("Dialog", "AC", None))
+
+if __name__ == '__main__':
+
+    import sys
+
+    app = QtGui.QApplication(sys.argv)
+    calc = Calculator()
+    sys.exit(calc.exec_())
+
 
 
 if __name__ == "__main__":

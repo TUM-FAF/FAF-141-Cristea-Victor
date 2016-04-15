@@ -66,7 +66,10 @@ class MyCalc(QtGui.QMainWindow):
     self.currentNum = 0
     self.lcdString = ''
     self.operation = self.sender().objectName()
-    
+    if self.operation == 'plmin':
+      self.ans = -self.previousNum 
+      self.ui.lcd.display(self.ans)
+      
   def enterClicked(self):
     if self.operation == 'plus':
       self.ans = self.previousNum + self.currentNum
@@ -86,9 +89,7 @@ class MyCalc(QtGui.QMainWindow):
     if self.operation == 'sqrt':
       self.ans = math.sqrt (self.previousNum)
 
-    if self.operation == 'plmin':
-      self.ans = -self.previousNum 
-      self.ui.lcd.display(self.ans)
+    
       
     self.currentNum = self.ans
     self.ui.lcd.display(self.ans)
